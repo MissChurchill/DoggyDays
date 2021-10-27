@@ -33,8 +33,8 @@ interface DogApiService {
 
     // https://dog.ceo/api/breeds/image/random
     @GET("breeds/image/random")
-    suspend fun getRandomDog(@Query("q") dogName: String.Companion): Dog
-
+    //suspend fun getRandomDog(@Query("q") dogName: String.Companion): Dog
+    suspend fun getRandomDog(): Dog
 }
 
 object DogApi {

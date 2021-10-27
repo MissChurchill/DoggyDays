@@ -11,20 +11,19 @@ class MainViewModel : ViewModel() {
     //private val _currentlyDisplayedDog = MutableLiveData<Dog>()
     //val currentlyDisplayedDog: LiveData<Dog> = _currentlyDisplayedDog
 
-    private val _currentlyDisplayedDog = MutableLiveData<String>()
-    val currentlyDisplayedDog: LiveData<String> = _currentlyDisplayedDog
+    private val _currentlyDisplayedDog = MutableLiveData<Dog>()
+    val currentlyDisplayedDog: LiveData<Dog> = _currentlyDisplayedDog
 
-    private val _currentlyDisplayedDogImage = MutableLiveData<DogImage>()
-    val currentlyDisplayedDogImage: LiveData<DogImage> = _currentlyDisplayedDogImage
-
-
+    init{
+    getNewDog()
+}
     fun getNewDog() {
         viewModelScope.launch {
             // The response from https://dog.ceo/api/breeds/image/random
-            val response = DogApi.retrofitService.getRandomDog(String.Companion)
-            _currentlyDisplayedDog.value = response.status!!
+            //val response = DogApi.retrofitService.getRandomDog()
+            //_currentlyDisplayedDog.value = response.status!!
 
-            _currentlyDisplayedDogImage.value = response.image
+            _currentlyDisplayedDog.value = DogApi.retrofitService.getRandomDog()
+        }
         }
     }
-}
